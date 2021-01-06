@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				
+				text-decoration: none;
+				
+			}
+			.top{
+				width: 100%;
+				height: 500px;
+				background: url(彩练新闻/九宫格_02.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			.boo1{
+				width: 100%;
+				height:2400px;
+				background: url(彩练新闻/九宫格_03.jpg);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+			}
+			.boo2{
+				width: 100%;
+				height: 500px;
+				background: url(彩练新闻/九宫格_05.jpg) 0px 00px /100%;
+				background-repeat: no-repeat;
+				background-position: bottom;
+			}
+			.s1{
+				text-align: center;
+				font-size: 40px;
+				color: #EE9900;
+				position: absolute;
+				left: 40.5%;
+				top: 25%;
+			}
+			.center{
+				width: 70%;
+				height: 2400px;
+				background: white;
+				margin: 0 auto;
+				border: 5px solid red;
+				
+			}
+			h1{
+				height: 80px;
+				font-size: 80px;
+				display: block;
+				margin: 0 auto;
+				margin-bottom: 40px;
+			}
+			.imgbox{
+				margin: 0px auto;
+				width: 80%;
+				border: 3px solid black;
+				box-sizing: border-box;
+				margin-top: -1px;
+			}
+			.imgbox img{
+				margin: 20px 0px 20px;
+				width: 40%;
+			}
+			.p1{
+				width: 80%;
+				margin:20px 10% 20px;
+				font-size: 40px;
+			}
+			.imgrj{
+				width: 80%;
+				margin:30px 10% 30px;
+				font-size: 60px;
+				text-align: center;
+				background: #df1f1e;
+				color: #EE9900;
+				border-radius: 20px;
+			}
+			.endbox{
+				padding-top: 100px;
+				width: 80%;
+				margin:0px 13% -40px;
+			}
+			.endbox img{
+				width: 92.5%;
+			}
+			.endbox a{
+				position: absolute;
+				text-align: center;
+				left: 36%;
+				font-size: 70px;
+				color:#EE9900;
+			}
+			.mb{
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: rgba(0,0,0,0.5);
+				display: none;
+			}
+			.gz{
+				width: 80%;
+				height: 600px;
+				overflow: hidden;
+				background: white;
+				border-radius: 10px;
+				z-index: 99;
+				position: fixed;
+				left: 10%;
+				font-size: 40px;
+				overflow-y:scroll;
+				display: none;
+			}
+			.gz p{
+				margin-top: 30px;
+				letter-spacing: 5px;
+				font-family: "微软雅黑";
+				color: #969896;
+			}
+			.gz p:nth-child(4){
+				margin-bottom: 100px;
+			}
+			.gz h2{
+				text-align: center;
+			}
+			.qr {
+				width: 80%;
+				height: 80px;
+				margin-top:40px;
+				position: fixed;
+				top: 56%;
+				bottom: 0;
+				font-size: 55px;
+				background: white;
+				border: solid 2px black;
+				text-align: center;
+			}
+			.dj{
+				top: 40%;
+				width: 60%;
+				z-index: 99;
+				height: 350px;
+				position: fixed;
+				background: white;
+				border-radius: 8px;
+				text-align: center;
+				left: 20%;
+				display: none;
+			}
+			.span1{
+				font-size: 50px;
+			}
+			input{
+				margin:30px 0 30px;
+				width: 60%;
+				height: 50px;
+				font-size: 30px;
+			}
+			.dj p{
+				font-size: 30px;
+				color: red;
+				display: none;
+			}
+			.qd{
+				font-size: 50px;
+				width: 50%;
+				height: 60px;
+				position: absolute;
+				border:2px #999999 solid;
+				bottom: 0px;
+			}
+			.qx{
+				border:2px #999999 solid;
+				font-size: 50px;
+				right: 0px;
+				bottom: 0px;
+				position: absolute;
+				width: 49%;
+				height: 60px;
+				float: left;
+			}
+		</style>
+		<script src="../day34/上课代码/js/jquery-1.12.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//点击游戏规则显示
+				$(".s1").click(function(){
+					$(".gz").show();
+					$(".mb").show();
+				})
+				$(".qr").click(function(){
+					$(".gz").hide();
+					$(".mb").hide();
+				})
+				//点击兑奖显示输入兑奖密码框
+				var boo = false;
+				var i = 0;
+				$(".imgrj").click(function(){
+					$(".dj").show();
+					$(".mb").show();
+					i = $(".imgrj").index(this);
+					console.log($(".imgrj span").eq(i).html()+"+"+i);
+				})
+				//点击确认判定是否正确
+				$(".qd").click(function(){
+					if($("input").val()!=123){ 
+						$(".pp").show();
+					}else{
+						$(".imgrj span").eq(i).html("已兑奖");
+						$(".imgrj").eq(i).css("pointer-events","none");
+						$("input").val("");
+						$(".pp").hide();
+						$(".dj").hide();
+						$(".mb").hide();
+					}
+				})
+				$(".qx").click(function(){
+					$(".dj").hide();
+					$(".mb").hide();
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="top">
+			<span class="s1">
+				游戏规则
+			</span>
+		</div>
+		<div class="boo1">
+			<div class="gz"> <h2>游戏规则</h2>
+				<p>1. 每名客户每天抽奖有3次机会，点击转盘的【开始抽奖】按钮进行抽奖，转动结束停留的位置就是您获得的奖品；</p>
+				<p>2. 中奖后需填写姓名、电话，兑奖时根据您的填写的信息进行现场兑奖，具体奖项如下：
+				黄封村人参酒两瓶：共100份，总价值12000元
+				莱沃口腔储值卡：共50份，总价值10000元
+				中国联通流量卡：共200份，总价值10000元
+				S5健身俱乐部贵宾卡：共有80份，总价值8000元
+				圣雅瑜伽SPA会所储值卡：共3份，总价值6000元
+				陶进二胡工作室：共20份，总价值6000元
+				蛋壳科技VR体验卡：共50份，总价值2500元</p>
+				<p>3. 抽奖时间：
+				2021年1月1日~3日游戏时间：每天10：00~23：59：59
+				</p>
+				<p></p>
+				<div class="qr">
+					<span>确定</span>
+				</div>
+			</div>
+			
+			<div class="dj">
+				<h2 class="span1">兑奖密码</h2>
+				<input type="password" name="" id="" value="" />
+				<p class="pp">密码不正确</p>
+				<div class="qd">
+					<span>确定</span>
+				</div>
+				<div class="qx">
+					<span>取消</span>
+				</div>
+			</div>
+			<div class="center">
+				<h1 align="center">我的奖品</h1>
+				<div align="center" class="imgbox"><img src="彩练新闻/黄封村人参酒两瓶.jpg"/></div>
+				<div  class="p1">
+					<p>奖品：黄封村人参酒</p>
+					<p>中奖时间：2017年1月23日</p>
+					<p>兑奖时间：截止到2021年2月26日</p>
+					<p>兑奖地址：吉林省酒文化博物馆（亚泰大街9699号）</p>
+					<p>联系电话：0431-88508899</p>
+				</div>
+				<div class="imgrj">
+					<span>立即兑奖</span>
+					
+				</div>
+				<div align="center" class="imgbox"><img src="彩练新闻/莱沃口腔储值卡.jpg"/></div>
+				<div  class="p1">
+					<p>奖品：黄封村人参酒</p>
+					<p>中奖时间：2017年1月23日</p>
+					<p>兑奖时间：截止到2021年2月26日</p>
+					<p>兑奖地址：吉林省酒文化博物馆（亚泰大街9699号）</p>
+					<p>联系电话：0431-88508899</p>
+				</div>
+				<div class="imgrj">
+					<span>立即兑奖</span>
+				</div>
+				
+				<div align="center" class="imgbox"><img src="彩练新闻/联通.jpg"/></div>
+				<div  class="p1">
+					<p>奖品：黄封村人参酒</p>
+					<p>中奖时间：2017年1月23日</p>
+					<p>兑奖时间：截止到2021年2月26日</p>
+					<p>兑奖地址：吉林省酒文化博物馆（亚泰大街9699号）</p>
+					<p>联系电话：0431-88508899</p>
+				</div>
+				<div align="center" class="imgrj">
+					<span>立即兑奖</span>
+				</div>
+			</div>
+		</div>
+		<div class="boo2">
+			<div class="endbox">
+				<img src="彩练新闻/我的奖品.png"/>
+				<a href="抽奖系统02.html" class="ends">
+					继续抽奖
+				</a>
+			</div>
+		</div>
+		<div class="mb"></div>
+	</body>
+</html>

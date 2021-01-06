@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				text-decoration: none;
+			}
+			.top{
+				width: 95vh;
+				height: 60vh;
+				background: url(彩练新闻/九宫格_02.jpg);
+				background-size: 100% 100%;
+			}
+			.boo1{
+				margin-top: -155px;
+				width: 95vh;
+				height: 60vh;
+				background: url(彩练新闻/九宫格_03.jpg) 00px 00px /100%;
+				background-repeat: repeat-y;
+			}
+			.boo2{
+				width: 95vh;
+				height: 60vh;
+				background: url(彩练新闻/九宫格_05.jpg) 0px 00px /100%;
+				background-repeat: repeat-x;
+				background-position: bottom;
+			}
+			.oh{
+				position: relative;
+				font-size: 70px;
+				top: -150px;
+				color: #EE9900;
+				text-align: center;
+			}
+			.gz{
+				width: 80%;
+				height: 800px;
+				overflow: hidden;
+				background: white;
+				border-radius: 10px;
+				z-index: 99;
+				position: fixed;
+				left: 10%;
+				font-size: 65px;
+				overflow-y:scroll;
+				display: none;
+			}
+			.gz p{
+				margin-top: 30px;
+				letter-spacing: 5px;
+				font-family: "微软雅黑";
+				color: #969896;
+			}
+			.gz p:nth-child(4){
+				margin-bottom: 100px;
+			}
+			.gz h2{
+				text-align: center;
+			}
+			.qr1 {
+				width: 80%;
+				height: 80px;
+				margin-top:40px;
+				position: fixed;
+				top: 57%;
+				bottom: 0;
+				font-size: 55px;
+				background: white;
+				border: solid 1px black;
+				text-align: center;
+			}
+			.box1{
+				position: relative;
+				top: -50px;
+				margin: 0 auto;
+				width: 100%;
+			}
+			.list {
+				list-style: none;
+				width: 1000px;
+				height: 1000px;
+				margin: 0 auto;
+				border: solid 8px red;
+				background: white;
+			}
+			.list li{
+				float: left;
+				margin: 13px;
+			}
+			.list img{
+				width: 300px;
+			}
+			.wdjp{
+				position: relative;
+				top: -130px;
+				margin: 0 auto;
+				width: 1000px;
+				height: 700px;
+			}
+			.wdjp img{
+				width: 1000px;
+			}
+			.wdjp span{
+				font-size: 100px;
+				position: relative;
+				top: 130px;
+				left: 300px;
+				color: #EE9900;
+			}
+			.lbt{
+				top: 200px;
+				width: 75%;
+				height: 600px;
+				position: relative;
+				background: white;
+				border: solid 10px red;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			.lbt h1{
+				top: 330px;
+				font-size: 100px;
+				color: red;
+				margin: 20px 40px 0px;
+			}
+			.list2{
+				margin-top: -300px;
+				width: 1000px;
+				height: 800px;
+				position: relative;
+			}
+			.list2 li{
+				list-style: none;
+				width: 1000px;
+				height: 100px;
+				font-size: 60px;
+				margin-left: 150px;
+			}
+			.tc{
+				position: absolute;
+				background: white;
+				width: 1000px;
+				height: 1000px;
+				border-radius: 50px;
+				left:35%;
+				z-index: 99;
+				
+				display: none;
+			}
+			.tc-con{
+				font-size: 70px;
+			}
+			.tc-con h2{
+				margin-top: 50px;
+				text-align: center;
+			}
+			.tc-con p{
+				margin-left: 10%;
+			}
+			.sp1{
+				height: 100px;
+			}
+			.sp2{
+			}
+			.tc-con span{
+				margin-left: 10%;
+				color: red;
+				padding-top: 100px;
+			}
+			.p1{
+				display: none;
+			}
+			.p2{
+				display: none;
+			}
+			.p3{
+				display: none;
+			}
+			.tc-con input{
+				margin-left: 10%;
+				border: 3px solid black;
+				font-size: 70px;
+				width: 80%;
+				height: 100px;
+				border-radius: 20px;
+			}
+			.mb{
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: rgba(0,0,0,0.5);
+				display: none;
+			}
+			a:link{
+				color: black;
+			}
+			.qr{
+				border:3px black solid;
+				width: 50%;
+				height: 100px;
+				text-align: center;
+				position: absolute;
+				bottom: 0;
+			}
+			.qx{
+				bottom: 0;
+				position: absolute;
+				right: 0px;
+				text-align: center;
+				float: left;
+				border:4px black solid;
+				width: 50%;
+			}
+			.zj{
+				position: absolute;
+				background: white;
+				width: 100%;
+				height: 1300px;
+				border-radius: 50px;
+				left:35%;
+				z-index: 99;
+				font-family: "微软雅黑";
+				display: none;
+			}
+			.img1{
+				width: 800px;
+				margin-left: 100px;
+				display: none;
+			}
+			.zj p{
+				text-align: center;
+				font-size: 60px;
+				width: 100%;
+				border-radius: 20px;
+			}
+			.zj p:nth-child(2){
+				color: red;
+			}
+			.zj img{
+				border: 3px solid #969896;
+				margin:20px 300px 20px;
+			}
+			.zj span{
+				width: 100%;
+				height: 100px;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				border: solid 3px black;
+				text-align: center;
+				font-size: 60px;
+				width: 100%;
+				border-radius: 20px;
+			}
+		</style>
+		<script src="../day34/上课代码/js/jquery-1.12.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var i = 0;
+				//获得奖品轮播图
+				var se1 = setInterval(function(){
+					i++;
+					$(".list2").css("top",-i);
+					if(i==600){
+						i=0;
+					}
+				},10)
+				//点击游戏规则显示
+				$(".s8").click(function(){
+					$(".gz").show();
+					$(".mb").show();
+				})
+				$(".qr1").click(function(){
+					$(".gz").hide();
+					$(".mb").hide();
+				})
+				//抽奖
+				var j = 0;
+				var num = 0;
+				var s1 = 3;
+				$(".list img").eq(0).css("border","solid 8px #00A5FF");
+				$(".list img").eq(4).click(function(){
+					
+					$(".list img").css("pointer-events","none");
+					
+					$(".oh").find("span").html(--s1);
+					if(s1<0){
+						$(".list img").css("pointer-events","all");
+						alert("今日机会已用完，请明天再来吧");
+						s1=0;
+						$(".oh").find("span").html(0);
+					}else{
+						var se2 = setInterval(function(){
+					j++;
+					$(".list img").submit("img").css("border","none");
+					$(".list img").eq(j).css("border","solid 8px #00A5FF");
+					if(j==2){
+						j=4;
+					}
+					if(j==5){
+						j=7;
+					}
+					else if(j==8){
+						j=6;
+					}
+					else if(j==7){
+						j=5;
+					}
+					else if(j==6){
+						j=2;
+					}
+					else if(j==3){
+						j=-1;
+					}
+					num=num+Math.round(Math.random()*50+3);
+					if(num>=300){
+						clearInterval(se2);
+						$(".list img").css("pointer-events","all");
+						if(j==0){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(0).siblings(".img1").hide();
+							$(".mb").show();
+						}
+						else if(j==1){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(1).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你莱沃口腔储值卡");
+						}
+						else if(j==2){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(5).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你陶进二胡工作室");
+						}
+						else if(j==-1){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(3).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你S5健身俱乐部贵宾卡");
+						}
+						else if(j==4){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(2).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你中国联通流量卡");
+						}
+						else if(j==6){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(7).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("感谢参与！");
+						}
+						else if(j==7){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(4).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你圣雅瑜伽SPA会所储值卡");
+						}
+						else if(j==5){
+							$(".zj").show();
+							$(".img1").show();
+							$(".img1").eq(6).siblings(".img1").hide();
+							$(".mb").show();
+//							alert("恭喜你蛋壳科技VR体验卡");
+						}
+						j=-1;
+						num=0;
+						
+					}
+				},400)
+					}
+				
+				})
+				
+				//点击我的奖品
+				$(".wdjp").click(function(){
+					$(".mb").show();
+					$(".tc").show();
+				})
+				//判断信息是否正确，正确则跳转到第三页面
+				var phoneReg = /(^1[3|4|5|7|8|9]\d{9}$)|(^09\d{8}$)/;
+				var nameReg = /^[\u4E00-\u9FA5]{2,4}$/;
+				$(".qr").click(function(){
+					if($(".t1").val()==""){
+						$(".p1").show();
+					}else{
+						$(".p1").hide();
+					}
+					if($(".t2").val()==""){
+						$(".p2").show();
+					}else{
+						$(".p2").hide();
+						if(!phoneReg.test($(".t2").val())){
+						$(".p3").show();
+						}
+					}
+					if($(".t1").val()!="" && phoneReg.test($(".t2").val())){
+						window.location.href = "抽奖系统03.html";
+					}
+				})
+				$(".qx").click(function(){
+					$(".tc").hide();
+					$(".mb").hide();
+					$(".p1").hide();
+					$(".p2").hide();
+					$(".p3").hide();
+					$(".t1").val("");
+					$(".t2").val("");
+				})
+				$(".span1").click(function(){
+					$(".zj").hide();
+					$(".img").hide();
+					$(".mb").hide();
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="top"></div>
+		<div class="boo1">
+			
+			<div class="zj">
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_01.jpg"/>
+					<p>黄封村人参酒</p>
+					<p>兑奖时间：截止到2021年2月26日</p>
+					<p>兑奖地址：吉林省酒文化博物馆（亚泰大街9699号）</p>
+					<p>联系电话：0431-88508899</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_02.jpg"/>
+					<p>莱沃口腔储值卡</p>
+					<p>兑奖时间：截止到2021年2月31日</p>
+					<p>兑奖地址：工农大路1780号（省中医院东侧）</p>
+					<p>联系电话：0431—89545888</p>
+					<p>注：洗牙4次（不限本人使用）；口腔体检；</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_03.jpg"/>
+					<p>中国联通流量卡</p>
+					<p>兑奖时间：截止到2021年3月1日</p>
+					<p>兑奖地址：长春市内联通营业厅登记统一存入
+					<p>联系电话：无</p>
+					<p>注：2G/3G用户500M流量；4G用户1G流量;异地号码，非正常在用号码、已有相同流量包、融合套餐等不能使用</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_04.jpg"/>
+					<p> S5健身俱乐部贵宾卡</p>
+					<p>兑奖时间：截止到2021年4月30日</p>
+					<p>兑奖地址：南关区幸福街与蔚山路交会处绿地中央广场盘古家宴旁
+						高新区荷园路与华光街交会处东行50米安联国际
+						绿园区景阳大路与春城大街交会处北行150米
+					</p>
+					<p>联系电话：
+					0431—81887555；
+					0431—80811555；
+					0431—88006122
+					</p>
+					<p>注：3店通用；单天无时间限制，器材限制使用；</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_06.jpg"/>
+					<p>圣雅瑜伽SPA会所储值卡</p>
+					<p>兑奖时间：截止到2021年7月1日</p>
+					<p>兑奖地址：飞跃东路林田创客公园D栋2楼彩练新闻</p>
+					<p>联系电话：13943017772</p>
+					<p>注：每人限用1张；不含服装、垫子等费用；</p>
+				<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_07.jpg"/>
+					<p> 陶进二胡工作室</p>
+					<p>兑奖时间：截止到2021年12月31日</p>
+					<p>兑奖地址：飞跃东路林田创客公园D栋2楼彩练新闻</p>
+					<p>联系电话：13943017772</p>
+					<p>注：学习二胡免一次课时费；</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>恭喜你，中奖了</p>
+					<img src="彩练新闻/sudoku_08.jpg"/>
+					<p>蛋壳科技VR体验卡</p>
+					<p>兑奖时间：截止到2021年7月1日</p>
+					<p>兑奖地址：
+
+同志街与同光路交会处联通营业厅；联通营业厅前进大街店；</p>
+					<p>联系电话：无</p>
+					<span class="span1">确定</span>
+				</div>
+				<div class="img1"><p>提醒</p><p>很遗憾，您没中奖</p>
+					<img src="彩练新闻/sudoku_09.jpg"/>
+					<p>啥几把都没有</p>
+					<span class="span1">确定</span>
+				</div>
+			</div>
+			<div class="tc">
+				<div class="tc-con">
+					<h2>输入信息</h2>
+					<p>姓名：</p><input type="text" class="t1" name="" id="" value="" />
+					<br>
+					<div class="sp1"><span  class="p1">姓名不能为空</span></div>
+					<p>手机号：</p><input type="text" class="t2" name="" id="" value="" />
+					<br>
+					<div class="sp2"><span  class="p2">手机号不能为空</span></div>
+					<div class="sp3"><span  class="p3">请输入正确的手机号</span></div>
+					<div class="qr">
+						<a>确认</a>
+					</div>
+					<div class="qx">
+						<a>取消</a>
+					</div>
+					
+				</div>
+			</div>
+			<h3 class="oh">抽奖次数：<span>3</span>次&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp; <b class="s8">游戏规则</b>
+			</h3>
+			<div class="gz"> <h2>游戏规则</h2>
+					<p>1. 每名客户每天抽奖有3次机会，点击转盘的【开始抽奖】按钮进行抽奖，转动结束停留的位置就是您获得的奖品；</p>
+					<p>2. 中奖后需填写姓名、电话，兑奖时根据您的填写的信息进行现场兑奖，具体奖项如下：
+					黄封村人参酒两瓶：共100份，总价值12000元
+					莱沃口腔储值卡：共50份，总价值10000元
+					中国联通流量卡：共200份，总价值10000元
+					S5健身俱乐部贵宾卡：共有80份，总价值8000元
+					圣雅瑜伽SPA会所储值卡：共3份，总价值6000元
+					陶进二胡工作室：共20份，总价值6000元
+					蛋壳科技VR体验卡：共50份，总价值2500元</p>
+					<p>3. 抽奖时间：
+					2021年1月1日~3日游戏时间：每天10：00~23：59：59
+					</p>
+					<p></p>
+				<div class="qr1">
+					<span>确定</span>
+				</div>
+			</div>
+			<div class="box1">
+				<ul class="list">
+					<li>
+							<img src="彩练新闻/sudoku_01.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_02.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_03.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_04.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_05.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_06.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_07.jpg"/>
+					</li>
+					<li>
+							<img src="彩练新闻/sudoku_08.jpg"/>
+					</li><li>
+							<img src="彩练新闻/sudoku_09.jpg"/>
+					</li>
+				</ul>
+			</div>
+			<div class="wdjp"><span>我的奖品</span><img src="彩练新闻/我的奖品.png"/></div>
+		</div>
+		<div class="boo2">
+			<div class="lbt">
+				<h1>已发出的奖品：</h1>
+				<ul class="list2">
+					<li><span>恭喜173****3628获得奥里给一斤</span></li>
+					<li><span>恭喜123****3172获得奥里给一斤</span></li>
+					<li><span>恭喜117****3141获得奥里给一斤</span></li>
+					<li><span>恭喜174****6247获得奥里给一斤</span></li>
+					<li><span>恭喜162****3142获得奥里给一斤</span></li>
+					<li><span>恭喜175****2544获得奥里给一斤</span></li>
+					<li><span>恭喜198****1145获得奥里给一斤</span></li>
+					<li><span>恭喜112****5747获得奥里给一斤</span></li>
+					<li><span>恭喜173****3628获得奥里给一斤</span></li>
+					<li><span>恭喜123****3172获得奥里给一斤</span></li>
+					<li><span>恭喜117****3141获得奥里给一斤</span></li>
+					<li><span>恭喜174****6247获得奥里给一斤</span></li>
+					<li><span>恭喜162****3142获得奥里给一斤</span></li>
+					<li><span>恭喜175****2544获得奥里给一斤</span></li>
+					<li><span>恭喜198****1145获得奥里给一斤</span></li>
+					<li><span>恭喜112****5747获得奥里给一斤</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mb"></div>
+		
+	</body>
+</html>
