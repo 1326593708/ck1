@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				-webkit-user-select: none;
+				user-select: none;
+			}
+			.obox{
+				width: 400px;
+				height:300px;
+				background: #DD4A68;
+				margin: 200px auto 0px;
+				text-align: center;
+			}
+			.obox h4{
+				padding-top: 10px;
+			}
+			.obox img{
+				width: 50px;
+			}
+			.up{
+				position: absolute;
+				margin-left: 80px;
+				margin-top: 80px;
+			}
+			.down{
+				position: absolute;
+				margin-left: 270px;
+				margin-top: 80px;
+			}
+			.stop{
+				position: absolute;
+				margin-left: 175px;
+				margin-top: 170px;
+			}
+			.xie{
+				position: absolute;
+				line-height: 140px;
+				margin-left: 150px;
+				margin-top: 60px;
+				width: 100px;
+				height: 100px;
+				background:#98FB98 ;
+				border-radius: 100%;
+				border: 1px black solid;
+				display: block;
+				animation:mykey 3s linear infinite;
+			}
+			@keyframes mykey{
+			　	0%{
+					transform: rotateZ(0deg);/*从0度开始*/
+				}
+				100%{
+					transform: rotateZ(360deg);/*360度结束*/
+				}
+			}
+			.list{
+				list-style: none;
+				width: 100%;
+			}
+			.list li{
+				margin-top: 230px;
+				overflow: hidden;
+			}
+			.list audio{
+				margin-left: -45px;
+				width: 450px;
+				background: #000000;
+			}
+			.box1{
+				margin: 0 auto;
+				width: 400px;
+				height: 300px;
+				background: #55A532;
+			}
+			.box1 h2{
+				padding: 20px 20px 10px;
+			}
+			.box1 span{
+				position: relative;
+				margin-top: -40px;
+				float: left;
+				margin-left: 44%;
+				font-weight: bold;
+				color:  #DB7093;
+				border: 2px solid #969896;
+				border-radius: 8px;
+				padding: 5px;
+				background: white;
+				font-family: "微软雅黑";
+			}
+			.box1 img{
+				width: 25px;
+				float: right;
+				position: relative;
+				top: -35px;
+				margin-right: 20px;
+			}
+			.box1 p{
+				margin: 10px;
+			}
+		</style>
+		<script src="../js/jquery-1.12.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var i = 0;
+				var b = true;
+				var s1 = $("p").length;
+				var xb = $(".list li").index();
+				var aud = $("#aud")[0];
+				$("p").eq(xb).siblings("p").css("color","black");
+				$("p").eq(xb).css("color","red");
+				$(".list li").eq(i).siblings("li").hide();
+				$(".xie").css("animation","none");
+//				fn2();
+				aud.addEventListener('ended', function () { 
+				     fn1();
+				}, false);
+				//媒体是否暂停
+				
+				//点击播放或暂停
+				$(".stop").click(function(){
+					$("p").eq(xb).siblings("p").css("color","black");
+					$("p").eq(xb).css("color","red");
+					if(b==true){
+						$(".xie").css("animation","mykey 3s linear infinite");
+						aud.play();
+						$(".stop img").attr("src","../icon_h2fgz38vlo7/bofangqi-zanting.png");
+						b = false;
+						
+					}else{
+						$(".xie").css("animation","paused ");
+						aud.pause();
+						$(".stop img").attr("src","../icon_h2fgz38vlo7/bofangqi-bofang.png");
+						b = true;
+						
+					}
+				})
+				//点击下一首
+				$(".down").click(fn1);
+				function fn1(){
+					if($(".sp1").html()=="随机循环"){
+						xb = Math.floor(Math.random()*(s1));
+					}
+					console.log(xb);
+					$(".xie").css("animation","mykey 3s linear infinite");
+					$(".stop img").attr("src","../icon_h2fgz38vlo7/bofangqi-zanting.png");
+					xb++;
+					if(xb==s1){
+						xb=0;
+					}
+					$("p").eq(xb).siblings("p").css("color","black");
+					$("p").eq(xb).css("color","red");
+					$(".oh").html($("p").eq(xb).html());
+					aud.load();
+					$(".list audio").attr("src","../MP3/"+$("p").eq(xb).html());
+					$(".list audio").attr("autoplay","autoplay");
+				}
+				//点击上一首
+				$(".up").click(function(){
+					if($(".sp1").html()=="随机循环"){
+						xb = Math.floor(Math.random()*(s1));
+					}
+					$(".xie").css("animation","mykey 3s linear infinite");
+					$(".stop img").attr("src","../icon_h2fgz38vlo7/bofangqi-zanting.png");
+					xb--;
+					if(xb<0){
+						xb=s1-1;
+					}
+					$("p").eq(xb).siblings("p").css("color","black");
+					$("p").eq(xb).css("color","red");
+					$(".oh").html($("p").eq(xb).html());
+					aud.load();
+					$(".list audio").attr("src","../MP3/"+$("p").eq(xb).html());
+					$(".list audio").attr("autoplay","autoplay");
+				})
+				//点击单曲循环，播放完毕后进行单曲循环
+				$(".i3").click(function(){
+					$(".list audio").attr("loop","loop");
+					$(".i1").css("pointer-events","all");
+					$(".i2").css("pointer-events","all");
+					$(".sp1").html("单曲循环");
+					$(".sp1").css("color","#404040")
+				})
+				//点击顺序循环，播放完毕后进行顺序循环
+				$(".i2").click(fn2);
+				function fn2(){
+					$(".list audio").removeAttr("loop");
+					$(".i1").css("pointer-events","all");
+					$(".i2").css("pointer-events","none");
+					$(".sp1").html("顺序循环");
+					$(".sp1").css("color","#DB7093")
+					
+				}
+				//点击随机播放，随机播放音乐
+				$(".i1").click(function(){
+					$(".i2").css("pointer-events","all");
+					$(".i1").css("pointer-events","none");
+					$(".list audio").removeAttr("loop");
+					$(".sp1").html("随机循环");
+					$(".sp1").css("color","#8A2BE2")
+					xb = Math.floor(Math.random()*(s1));
+					
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="obox">
+			<div class="up">
+				<img src="../icon_h2fgz38vlo7/shangyishou.png"/>
+			</div>
+			<div class="down">
+				<img src="../icon_h2fgz38vlo7/xiayishou.png"/>
+			</div>
+			<div class="stop">
+				<img src="../icon_h2fgz38vlo7/bofangqi-bofang.png"/>
+			</div>
+			<div class="xie">
+				<img src="../icon_h2fgz38vlo7/鞋18.png"/>
+			</div>
+			<h4 class="oh">张家旺 - 白山茶（合唱版）（翻自 陈雪凝).mp3</h4>
+			<ul class="list">
+				<li><audio  id="aud" controls="controls" src="../MP3/张家旺 - 白山茶（合唱版）（翻自 陈雪凝）.mp3"></audio></li>
+			</ul>
+		</div>
+		<div class="box1">
+			<h2>歌曲列表</h2>
+			<span class="sp1">顺序循环</span>
+			<div class="i1">
+				<!--随机-->
+				<img src="../icon_h2fgz38vlo7/icon--.png"/>
+			</div>
+			<div class="i2">
+				<!--顺序循环-->
+				<img src="../icon_h2fgz38vlo7/ziyuan.png"/>
+			</div>
+			<div class="i3">
+				<!--单曲-->
+				<img src="../icon_h2fgz38vlo7/danquxunhuan.png"/>
+			</div>
+			<p>张家旺 - 白山茶（合唱版）（翻自 陈雪凝）.mp3</p>
+			<p>吴大文 - 心墙（翻自 林俊杰）.mp3</p>
+			<p>薛之谦 - 不爱我.mp3</p>
+			<p>晓月老板 - 探清水河.mp3</p>
+			<p>遊助 - 一笑懸命.mp3</p>
+			<p>马越敏 - 够爱（深情女声版）（翻自 东城卫）.mp3</p>
+		</div>
+	</body>
+</html>
